@@ -1,34 +1,30 @@
 import React, { Component } from "react";
 import PhoneBookCardsTitles from "../PhoneBookCardsTitles/PhoneBookCardsTitles";
+import Forms from "../Forms/Forms";
+import ContactLists from "../ContactLists/ContactLists";
 import { PhoneBookCard } from "./PhoneBookCards.styles";
 
 export default class PhoneBookCards extends Component {
   state = {
     contacts: [],
-    name: "",
+  };
+
+  formSubmit = (contacts) => {
+    console.log(contacts);
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts, contacts],
+    }));
   };
 
   render() {
     return (
       <PhoneBookCard>
         <PhoneBookCardsTitles title="Phonebook" />
-        <form>
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-          />
-
-          <button type="button">'Add contact'</button>
-        </form>
+        <Forms onSubmit={this.formSubmit} />
 
         <PhoneBookCardsTitles title="Contacts" />
 
-        <ul>
-          <li></li>
-        </ul>
+        <ContactLists text={this.state.contacts} />
       </PhoneBookCard>
     );
   }
