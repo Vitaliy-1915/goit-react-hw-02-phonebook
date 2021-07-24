@@ -24,7 +24,7 @@ export default class PhoneBookCards extends Component {
 
         <PhoneBookCardsTitles title="Contacts" />
 
-        <ContactLists text={this.state.contacts} />
+        <ContactLists contacts={this.state.contacts} />
       </PhoneBookCard>
     );
   }
