@@ -1,12 +1,12 @@
 import React from "react";
-import { FilterStyle } from "./Filter.styles";
+import { FilterStyle, Input, Label } from "./Filter.styles";
 
 function Filter({ value, onChange }) {
   return (
     <FilterStyle>
-      <label>
+      <Label>
         Find contacts by name
-        <input
+        <Input
           type="text"
           name="filter"
           value={value}
@@ -15,7 +15,7 @@ function Filter({ value, onChange }) {
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
         />
-      </label>
+      </Label>
     </FilterStyle>
   );
 }

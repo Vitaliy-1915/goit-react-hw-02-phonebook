@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const PhoneBookCard = styled.div`
   font-weight: bold;
-  font-size: 35px;
-  padding: 30px;
+  font-size: 20px;
+  padding: 10px;
   margin: 30px;
   width: 700px;
   background-color: rgb(243, 242, 242);

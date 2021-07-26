@@ -17,14 +17,6 @@ export default class PhoneBookCards extends Component {
     filter: "",
   };
 
-  isInList = (contacts, contact) => {
-    contacts.find(
-      (contact) =>
-        contact.name.toLowerCase().includes(contact.name.toLowerCase()),
-      console.log(contact.name)
-    );
-  };
-
   formSubmit = (e) => {
     const { contacts } = this.state;
     const contact = {
@@ -32,14 +24,16 @@ export default class PhoneBookCards extends Component {
       name: e.name,
       number: e.number,
     };
-    // console.log(contacts);
     // this.setState((prevState) => ({
     //   contacts: [...prevState.contacts, contacts],
     // }));
-    this.isInList(contacts, contact)
+
+    contacts.find((cont) =>
+      cont.name.toLowerCase().includes(contact.name.toLowerCase())
+    )
       ? alert(`${contact.name} is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [...contacts, contact],
+      : this.setState((prevState) => ({
+          contacts: [...prevState.contacts, contact],
         }));
   };
 
@@ -49,7 +43,7 @@ export default class PhoneBookCards extends Component {
     });
   };
 
-  deleteContact = (contactId) => {
+  onDeleteContact = (contactId) => {
     this.setState((prevState) => ({
       contacts: prevState.contacts.filter(
         (contact) => contact.id !== contactId
@@ -77,7 +71,7 @@ export default class PhoneBookCards extends Component {
 
         <ContactLists
           contacts={filterContacts}
-          onDeleteContact={this.deleteContact}
+          onDeleteContact={this.onDeleteContact}
         />
       </PhoneBookCard>
     );
