@@ -44,6 +44,7 @@ export default class PhoneBookCards extends Component {
   };
 
   onDeleteContact = (contactId) => {
+    console.log(contactId);
     this.setState((prevState) => ({
       contacts: prevState.contacts.filter(
         (contact) => contact.id !== contactId
